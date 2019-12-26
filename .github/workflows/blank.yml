@@ -13,6 +13,6 @@ jobs:
       run: echo Hello, world!
     - name: Run a multi-line script
       run: |
-        npm install
-        npm build
-        npm run test
+        yarn install
+        yarn run build
+        yarn run test
