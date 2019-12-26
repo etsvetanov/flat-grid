@@ -1,16 +1,24 @@
 {
   "name": "flat-grid",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Flat representation of 2D grid data",
+  "keywords": ["grid", "flag", "array", "dimensional"],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "browser": "dist/index.js",
+  "unpkg": "dist/index.js",
   "type": "module",
   "scripts": {
     "test": "node --experimental-modules tests/index.mjs",
     "build": "npx tsc",
     "watch": "npx tsc -w"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Evgeni Tsvetanov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/etsvet/flat-grid.git"
+  },
   "devDependencies": {
     "@babel/types": "^7.7.4",
     "typescript": "^3.7.4"
