@@ -4,8 +4,8 @@ Flat grid allows you to deal with 2 dimentional data while it is stored in a fla
 ## Example
 ```javascript
 const fg = FlatGrid(5, 4); // create grid of 5 rows and 4 columns
-fg.set(5, 4, 1); // set last element of last row to 1
-fg.get(5, 4); // get previously set element
+fg.set(4, 3, 1); // set last element of last row to 1
+fg.get(4, 3); // get previously set element
 
 ```
 
