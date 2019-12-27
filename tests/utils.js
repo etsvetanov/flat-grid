@@ -5,8 +5,11 @@ export function it(message, test) {
         test();
         console.log(`${m} [PASSED]`);
     } catch (e) {
-        console.log(`${m} [FAILED]`);
-        throw e;
+        if (e.name === 'AssertionError') {
+            console.log(`${m} [FAILED]`);
+        } else {
+            throw e;
+        }
     }
 }
 
