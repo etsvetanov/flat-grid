@@ -9,6 +9,11 @@ export class FlatGrid {
         this.columns = columns;
         this._flatArray = new Array(rows * columns);
     }
+    // [Symbol.iterator]() {
+    //     return {
+    //
+    //     }
+    // }
     get(i, j) {
         return this._flatArray[this.columns * i + j];
     }
@@ -17,11 +22,13 @@ export class FlatGrid {
     }
     static from2DArray(arr) {
         const rows = arr.length;
-        const columns = arr[0].length;
         const fg = new FlatGrid(arr.length, arr[0].length);
         for (let i = 0; i < arr.length; i++) {
-            fg._flatArray.splice(i, rows);
+            for (let j = 0; j < arr[i].length; j++) {
+                fg.set(i, j, arr[i][j]);
+            }
         }
+        return fg;
     }
     get length() {
         return this._flatArray.length;
