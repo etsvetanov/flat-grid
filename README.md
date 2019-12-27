@@ -17,3 +17,8 @@ Run `yarn install` and then `yarn run build` or `yarn run watch`
 
 **Runing tests**
 * `yarn run test`
+
+Tests are run against the code in the `dist` folder to avoid transpilation. Hence if there is a change in ts code you need to make sure the code is rebuild before running tests.
+
+Node version > 12 is necessary to be able to run tests (due to ES import/export features)
+
