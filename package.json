@@ -9,7 +9,7 @@
   "unpkg": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-modules tests/index.mjs",
+    "test": "node --experimental-modules tests/index.js",
     "build": "npx tsc",
     "watch": "npx tsc -w"
   },
