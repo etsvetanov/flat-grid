@@ -18,6 +18,37 @@ describe('FlatGrid instance', () => {
 
         assert(fg.length === 50);
     });
+
+    it('gets the correct item', () => {
+        const sampleArray = getSample2DArray();
+        const fg = FlatGrid.from2DArray(sampleArray);
+
+        assert(fg.get(1, 0) === 'e');
+    });
+
+    it('sets the correct item', () => {
+        const sampleArray = getSample2DArray();
+        const fg = FlatGrid.from2DArray(sampleArray);
+        fg.set(1, 3, 'hhh');
+        assert(fg.get(1, 3) === 'hhh');
+    });
+
+    it('is iterable', () => {
+        const sampleArray = getSample2DArray();
+        const fg = FlatGrid.from2DArray(sampleArray);
+
+        const it = fg[Symbol.iterator]();
+        assert(it.next().value === 'a');
+        assert(it.next().value === 'b');
+        assert(it.next().value === 'c');
+
+        let counter = 0;
+
+        for (let item of fg) counter++;
+
+        assert(counter === 16);
+
+    })
 });
 
 describe('FlatGrid.from2DArray', () => {

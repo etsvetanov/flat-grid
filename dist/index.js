@@ -9,11 +9,16 @@ export class FlatGrid {
         this.columns = columns;
         this._flatArray = new Array(rows * columns);
     }
-    // [Symbol.iterator]() {
-    //     return {
-    //
-    //     }
-    // }
+    [Symbol.iterator]() {
+        const self = this;
+        return {
+            current: -1,
+            next: function () {
+                this.current += 1;
+                return { value: self._flatArray[this.current], done: this.current === self._flatArray.length };
+            }
+        };
+    }
     get(i, j) {
         return this._flatArray[this.columns * i + j];
     }
