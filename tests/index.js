@@ -1,6 +1,6 @@
 import {FlatGrid} from '../dist/index.js';
 import { strict as assert } from 'assert';
-import { describe, it } from './utils.js';
+import { describe, it, _PASSED_TESTS, _REGISTERED_TESTS } from './utils.js';
 
 
 function getSample2DArray() {
@@ -32,3 +32,5 @@ describe('FlatGrid.from2DArray', () => {
         }
     })
 });
+
+console.log(`\nTests completed. Passed [${_PASSED_TESTS}/${_REGISTERED_TESTS}].`);
