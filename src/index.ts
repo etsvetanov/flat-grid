@@ -39,13 +39,24 @@ export class FlatGrid {
     }
 
     public static from2DArray(arr: Array<Array<any>>): FlatGrid {
-        const rows = arr.length;
+        const rows = arr.length, columns = arr[0].length;
+        const fg = new FlatGrid(rows, columns);
 
-        const fg = new FlatGrid(arr.length, arr[0].length);
-
-        for (let i=0; i<arr.length; i++) {
-            for (let j=0; j<arr[i].length; j++) {
+        for (let i=0; i<rows; i++) {
+            for (let j=0; j<columns; j++) {
                 fg.set(i, j, arr[i][j]);
+            }
+        }
+
+        return fg;
+    }
+
+    public static from1DArray(arr: Array<any>, rows, columns): FlatGrid {
+        const fg = new FlatGrid(arr.length, 1);
+
+        for (let i=0; i<rows; i++) {
+            for (let j=0; j<columns; j++) {
+                fg.set(i, j, arr[i*columns + j]);
             }
         }
 

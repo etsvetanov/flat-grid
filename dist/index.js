@@ -26,11 +26,20 @@ export class FlatGrid {
         this._flatArray[this.columns * i + j] = value;
     }
     static from2DArray(arr) {
-        const rows = arr.length;
-        const fg = new FlatGrid(arr.length, arr[0].length);
-        for (let i = 0; i < arr.length; i++) {
-            for (let j = 0; j < arr[i].length; j++) {
+        const rows = arr.length, columns = arr[0].length;
+        const fg = new FlatGrid(rows, columns);
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < columns; j++) {
                 fg.set(i, j, arr[i][j]);
+            }
+        }
+        return fg;
+    }
+    static from1DArray(arr, rows, columns) {
+        const fg = new FlatGrid(arr.length, 1);
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < columns; j++) {
+                fg.set(i, j, arr[i * columns + j]);
             }
         }
         return fg;

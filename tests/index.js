@@ -8,8 +8,13 @@ function getSample2DArray() {
         ['a', 'b', 'c', 'd'],
         ['e', 'f', 'g', 'h'],
         ['i', 'j', 'k', 'l'],
-        ['m', 'n', 'o', 'p']
+        ['m', 'n', 'o', 'p'],
+        ['q', 'r', 's', 't']
     ]
+}
+
+function getSample1DArray() {
+    return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 }
 
 describe('FlatGrid instance', () => {
@@ -61,6 +66,15 @@ describe('FlatGrid.from2DArray', () => {
         for (let i=0; i<expectedFlatArray.length; i++) {
             assert(fg._flatArray[i] === expectedFlatArray[i]);
         }
+    })
+});
+
+describe('FlatGrid.from1DArray', () => {
+    it('constructs correct flat array', () => {
+        const sampleArray = getSample1DArray();
+        const fg = FlatGrid.from1DArray(sampleArray, 5, 4);
+
+        assert(fg.get(1, 0) === 'e');
     })
 });
 
