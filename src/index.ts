@@ -4,14 +4,14 @@ export class FGSizeError extends Error {
     }
 }
 
-export class FlatGrid {
+export class FlatGrid<ValuesType> {
     public rows: number;
     public columns: number;
 
-    public _flatArray: Array<any>;
+    public _flatArray: Array<ValuesType>;
 
 
-    constructor(rows, columns) {
+    constructor(rows: number, columns: number) {
         this.rows = rows;
         this.columns = columns;
 
@@ -25,22 +25,22 @@ export class FlatGrid {
             current: -1,
             next: function() {
                 this.current += 1;
-                return { value: self._flatArray[this.current], done: this.current === self._flatArray.length }
+                return { value: self._flatArray[this.current], done: this.current === self.length }
             }
         }
     }
 
-    public get(i: number, j: number) {
+    public get(i: number, j: number): ValuesType {
         return this._flatArray[this.columns*i + j]
     }
 
-    public set(i, j, value) {
+    public set(i: number, j: number, value: ValuesType) {
         this._flatArray[this.columns*i + j] = value;
     }
 
-    public static from2DArray(arr: Array<Array<any>>): FlatGrid {
+    public static from2DArray<ValuesType>(arr: Array<Array<ValuesType>>): FlatGrid<ValuesType> {
         const rows = arr.length, columns = arr[0].length;
-        const fg = new FlatGrid(rows, columns);
+        const fg = new FlatGrid<ValuesType>(rows, columns);
 
         for (let i=0; i<rows; i++) {
             for (let j=0; j<columns; j++) {
@@ -51,8 +51,8 @@ export class FlatGrid {
         return fg;
     }
 
-    public static from1DArray(arr: Array<any>, rows, columns): FlatGrid {
-        const fg = new FlatGrid(arr.length, 1);
+    public static from1DArray<ValuesType>(arr: Array<ValuesType>, rows, columns): FlatGrid<ValuesType> {
+        const fg = new FlatGrid<ValuesType>(arr.length, 1);
 
         for (let i=0; i<rows; i++) {
             for (let j=0; j<columns; j++) {
@@ -63,7 +63,7 @@ export class FlatGrid {
         return fg;
     }
 
-    public get length() {
+    public get length(): number {
         return this._flatArray.length;
     }
 
