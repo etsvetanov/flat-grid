@@ -12,6 +12,7 @@ export function it(message, test) {
     } catch (e) {
         if (e.name === 'AssertionError') {
             console.log(`${m} [FAILED]`);
+            console.error(e);
         } else {
             throw e;
         }

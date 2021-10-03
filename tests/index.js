@@ -1,5 +1,5 @@
 import {FlatGrid} from '../dist/index.js';
-import { strict as assert } from 'assert';
+import { strict as assert, strictEqual as equal } from 'assert';
 import { describe, it, _PASSED_TESTS, _REGISTERED_TESTS } from './utils.js';
 
 
@@ -51,7 +51,7 @@ describe('FlatGrid instance', () => {
 
         for (let item of fg) counter++;
 
-        assert(counter === 16);
+        assert(counter === 20);
 
     })
 });
